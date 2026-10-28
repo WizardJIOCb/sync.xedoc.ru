@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount Wizard Sync encrypted vault
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/var/www/sync.xedoc.ru
+ExecStart=/var/www/sync.xedoc.ru/scripts/unlock-vault.sh mount
+ExecStop=/var/www/sync.xedoc.ru/scripts/lock-vault.sh
+
+[Install]
+WantedBy=multi-user.target
